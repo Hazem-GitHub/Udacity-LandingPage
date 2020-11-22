@@ -15,10 +15,11 @@
 
 
 /**
- * Define Global Variables
+ * Global Variables
  * 
 */
 const navbar = document.getElementById( 'navbar__list' ),
+    docFragment = document.createDocumentFragment(),
     sections = document.querySelectorAll( 'section' ),
     sections_length = sections.length;
 let observer;
@@ -26,11 +27,10 @@ let observer;
 
 /**
  * End Global Variables
+ * --------------------------------------------------------------------------------------------
  * Start Helper Functions
  * 
 */
-
-
 /**
 * @description Represent Menu item HTML Template generator
 * @constructor
@@ -107,7 +107,7 @@ function smoothscrollHorizontal( el ){
 
 
 /**
- * @description Represent funtion to be called when 
+ * @description Represent funtion to be called on stop scrolling
  * @constructor
  * @param  {Function} callback The function to run after scrolling stops
  */
@@ -146,25 +146,22 @@ const onStopScrolling = function (callback) {
 
 /**
  * End Helper Functions
+ * --------------------------------------------------------------------------------------------
  * Begin Main Functions
  * 
 */
-
-
-// build the nav
-const docFragment = document.createDocumentFragment();
+// 1. Build the nav
 for ( let i = 0; i < sections_length; i++ ) {
     const menuItem = generateMenuItemTemplate( i + 1 );
     docFragment.appendChild( menuItem ) ;
 }
 
 
-// Build menu 
+// 2. Build menu 
 navbar.appendChild( docFragment ) ;
 
 
-//// Set sections as active
-// Loop over All sections
+// 3. Set sections as active
 sections.forEach( item => {
     // Using Intersection observer API
     observer = new IntersectionObserver(function(entries) {
@@ -174,12 +171,12 @@ sections.forEach( item => {
         if(entries[0].isIntersecting === true) {
             // Add class 'active' to section when perfectly intersecting the viewport
             // Note that: Section height is (100vh) --> 100% = viewport height
-            // Thus the section will perfectly align with viewport
+            // Thus, the section will perfectly align with viewport
             intersectingSec.classList.add('active');
             // Add Class Active to the menu link corresponding to the Intersecting(active) section
             navbar_items[ intersectingSecIndex - 1 ].classList.add('active');
             // Only scroll horizonatlly to the active item in the menu while scrolling elements
-            if ( window.innerWidth < 800 ) {
+            if ( window.innerWidth < 560 ) {
                 // Set Scroll left value accordingly
                 smoothscrollHorizontal(navbar_items[ intersectingSecIndex - 1 ]);
             }
@@ -195,18 +192,12 @@ sections.forEach( item => {
 });
 
 
-
-
-
-
-
 /**
  * End Main Functions
+ * --------------------------------------------------------------------------------------------
  * Begin Events
  * 
 */
-
-
 // Scroll to section on link click
 navbar.querySelectorAll('.menu__link').forEach( item => item.addEventListener('click', smoothscroll));
 
@@ -214,9 +205,7 @@ navbar.querySelectorAll('.menu__link').forEach( item => item.addEventListener('c
 // Scroll to top on click back to top button
 document.getElementById('backTop').addEventListener('click', smoothscroll);
 
-
+// Hide Nav on stop scrolling
 onStopScrolling( () => {
     document.getElementById('header_nav').classList.add('hideNav');
-});
-
-
+})
