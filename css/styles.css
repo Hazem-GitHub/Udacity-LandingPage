@@ -1,0 +1,431 @@
+/*
+ *
+ * Import Normaliz.css first through CDN in index.html
+ *
+*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* ---- Base Rules ---- */
+body {
+    background: #201335;
+    background: linear-gradient(0deg, #4f4789 0%, #201335 100%);
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', Sans-Serif;
+    font-weight: 300;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+
+/* Typeography General*/
+h1 {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 3em;
+    margin: 3em 1rem 2em;
+}
+
+@media only screen and (min-width: 35em){
+    h1 {
+        font-size: 7em;
+        margin: 2em 4rem 1em;
+    }
+}
+
+h2 {
+    padding: 0.5em 0;
+    font-family: 'Roboto', Sans-Serif;
+    font-size: 3em;
+    /* color: #fff; */
+}
+
+p {
+    padding-top: 1em;
+    line-height: 1.6em;
+    /* color: #eee; */
+}
+
+/* ---- Layout Rules ---- */
+main {
+    margin: 10vh 0em 0vh;
+}
+
+.main-hero {
+    min-height: 40vh;
+    padding-top: 5em;
+}
+@media only screen and (max-width: 35em){
+    .main-hero {
+        padding-top: 10em;
+    }
+}
+
+section {
+    position: relative;
+    min-height: 100vh;
+}
+
+
+/* ---- Module Rules ---- */
+
+/* Back to top button styles */
+#backTop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    background: #131313;
+    color: #fff;
+    font-size: 2em;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    position: fixed;
+    bottom: -5em;
+    right: 1em;
+    z-index: 10;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.95;
+    transition: ease 0.5s all;
+    
+}
+
+#backTop:hover {
+    background: #201335;
+    opacity: 0.85;
+}
+#backTop:focus {
+    background: #201335;
+    opacity: 1;
+    outline: none;
+    border: none;
+}
+#backTop.shown {
+    display: flex;
+    bottom: 1em;
+}
+
+/* Header Styles */
+.page__header {
+    background:rgba(255, 255, 255, 1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+    overflow: hidden;
+    transition: ease 1s all;
+}
+.page__header.hideNav{
+    transform: translateY(-100%);
+}
+    .navbar__menu{
+    overflow-x: auto;
+    }
+    /* Navigation Styles*/
+    .navbar__menu ul {
+        padding-left: 0;
+        padding-right: 1em;
+        padding-top: 0;
+        margin: 0;
+        text-align: right;
+    }
+    @media only screen and (max-width: 35em){
+        .navbar__menu ul {
+            display: inline-flex;
+            width: max-content
+            
+        }
+    }
+        .navbar__menu li {
+            display: inline-block;
+        }
+        @media only screen and (max-width: 35em){
+            .navbar__menu li {
+                width: 40vw;
+                min-width: 200px;
+                text-align: center;
+            }
+        }
+
+            .navbar__menu .menu__link {
+                display: block;
+                width: 100%;
+                padding: 1em;
+                text-decoration: none;
+                background-color: transparent;
+                text-align: center;
+                color: #131313;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 600;
+                font-size: 1em;
+                border-top: 4px solid transparent;
+                text-decoration: none;
+                transition: ease 0.3s all;
+            }
+
+
+
+/* Footer Styles */
+.page__footer {
+    background: #131313;
+    padding: 3em;
+    color: #fff;
+}
+
+    .page__footer p{
+        color: #fff;
+    }
+    .page__footer small span{
+        font-family: 'Fira Sans', sans-serif;
+    }
+
+
+/* ---- Theme Rules ---- */
+/* Section Container Styles */
+.section__container {
+    padding: 1em;
+    text-align: left;
+    transition: ease 0.5s all;
+}
+
+@media only screen and (min-width: 35em){
+    .section__container {
+        max-width: 50em;
+        padding: 4em;
+    }
+}
+
+section:nth-of-type(even) .section__container {
+    margin-right: 0;
+    margin-left: auto;
+    text-align: left; 
+}
+
+/* Background Circles */
+/* Note that background circles are created with psuedo elements before and after */
+/* Circles appear to be random do to use of :nth-of-type psuedo class */
+section:nth-of-type(odd) .section__container::before {
+    content: '';
+    background: linear-gradient(0deg, rgba(32, 19, 53,.1) 0%, rgba(255,255,255,.1) 100%);
+    position: absolute;
+    z-index: 1;
+    width: 20vh;
+    height: 20vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+section:nth-of-type(even) .section__container::before {
+    content: '';
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(32, 19, 53,.1) 0%, rgba(255,255,255,.1) 100%);
+    position: absolute;
+    top: 3em;
+    right: 3em;
+    z-index: 1;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+section:nth-of-type(3n + 2) .section__container::after {
+    content: '';
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.1) 100%);
+    position: absolute;
+    left: 20vw;
+    bottom: 5em;
+    z-index: 1;
+    width: 25vh;
+    height: 25vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+
+section:nth-of-type(3n) .section__container::after {
+    content: '';
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(32, 19, 53,.1) 0%, rgba(255,255,255,.1) 100%);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+section:nth-of-type(3n + 1) .section__container::after {
+    content: '';
+    background: rgba(255,255,255,.1);
+    background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(32, 19, 53,.1) 100%);
+    position: absolute;
+    left: 20vw;
+    bottom: 5em;
+    z-index: 1;
+    width: 25vh;
+    height: 25vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+
+/* ---- Theme State Rules ---- */
+/* Section Active Styles */
+section.active .section__container::before {
+    opacity: 1;
+    animation: rotate 4s linear 0s infinite forwards;
+}
+
+section.active .section__container::after {
+    opacity: 1;
+    animation: rotate 5s linear 0s infinite forwards reverse;
+}
+section.active .section__container h2{
+    position: relative;
+    overflow: hidden;
+    border-color: inherit;
+}
+section.active .section__container.theme--light h2::after{
+    content: '';
+    position: absolute;
+    top:100%;
+    left:50%;
+    width:80%;
+    height: 4px;
+    background-color: #131313;
+    transform-origin: 0% 50%;
+    transform: translate(-200%, -90%);
+    border-radius: 10px;
+    transition: all ease 0.3;
+    animation: swipeFast 2s ease 0s infinite forwards;
+
+}
+section.active .section__container.theme--dark h2::after{
+    content: '';
+    position: absolute;
+    top:100%;
+    left:50%;
+    width:80%;
+    height: 4px;
+    background-color: #f4f4f8;
+    transform-origin: 0% 50%;
+    transform: translate(-200%, -90%);
+    border-radius: 10px;
+    transition: all ease 0.3;
+    animation: swipeFast 2s ease 0s infinite forwards;
+
+}
+
+
+/* ---------------------- */
+/* Custom Sections Styles */
+/* ---------------------- */
+/* utility */
+
+.border--red,
+.border--red:hover,
+.border--red.active {
+    border-color: #fe4a49;
+}
+.border--blue,
+.border--blue:hover,
+.border--blue.active {
+    border-color: #2ab7ca;
+}
+.border--yellow,
+.border--yellow:hover,
+.border--yellow.active {
+    border-color: #fed766;
+
+}
+.border--gray,
+.border--gray:hover,
+.border--gray.active {
+    border-color: #e6e6ea;
+}
+.border--lightViolet,
+.border--lightViolet:hover,
+.border--lightViolet.active {
+    border-color: #4f4789;
+}
+
+.bg--red,
+.bg--red:hover,
+.bg--red.active {
+    background-color: #fe4a49;
+    color: #f4f4f8;
+}
+.bg--blue,
+.bg--blue:hover,
+.bg--blue.active {
+    background-color: #2ab7ca;
+    color: #f4f4f8;
+}
+.bg--yellow,
+.bg--yellow:hover,
+.bg--yellow.active {
+    background-color: #fed766;
+    color: #131313;
+}
+.bg--gray,
+.bg--gray:hover,
+.bg--gray.active {
+    background-color: #e6e6ea;
+    color: #131313;
+}
+.bg--lightViolet,
+.bg--lightViolet:hover,
+.bg--lightViolet.active {
+    background-color: #4f4789;
+    color: #f4f4f8;
+}
+
+.theme--dark {
+    color: #fffded;
+}
+.theme--dark h2 {
+    border-bottom: 1px solid #fffded;
+}
+.theme--light {
+    color: #131313;
+}
+.theme--light h2 {
+    border-bottom: 1px solid #131313;
+}
+
+/* Section Active Styles Keyframe Animations */
+@keyframes rotate {
+	from {
+		transform: rotate(0deg)
+		           translate(-1em)
+		           rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg)
+		           translate(-1em) 
+		           rotate(-360deg);
+	}
+}
+@keyframes swipeFast {
+    from {
+		transform: translate(-200%, -90%) scaleX(1);
+	}
+	to {
+		transform: translate(200%, -90%) scaleX(2);
+	}
+}
