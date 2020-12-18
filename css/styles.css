@@ -303,7 +303,7 @@ section.active .section__container.theme--light h2::after{
     height: 2px;
     background-color: #131313;
     transform-origin: 0% 50%;
-    transform: translate(-200%, -80%) scaleX(1);
+    transform: translate(-200%, 0%) scaleX(1);
     border-radius: 2px;
     opacity: 1;
     transition: all ease 0.3;
@@ -319,7 +319,7 @@ section.active .section__container.theme--dark h2::after{
     height: 2px;
     background-color: #f4f4f8;
     transform-origin: 0% 50%;
-    transform: translate(-200%, -80%) scaleX(1);
+    transform: translate(-200%, 0%) scaleX(1);
     border-radius: 2px;
     opacity: 1;
     transition: all ease 0.3;
@@ -395,13 +395,13 @@ section.active .section__container.theme--dark h2::after{
     color: #fffded;
 }
 .theme--dark h2 {
-    border-bottom: 1px dashed #fffded;
+    border-bottom: 1px solid #fffded;
 }
 .theme--light {
     color: #131313;
 }
 .theme--light h2 {
-    border-bottom: 1px dashed #131313;
+    border-bottom: 1px solid #131313;
 }
 
 /* Section Active Styles Keyframe Animations */
