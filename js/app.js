@@ -86,10 +86,18 @@ const currentActiveNavItemEl = () => {
 function smoothscroll(e){
     e.preventDefault();
     const targetId = e.currentTarget.getAttribute("href");
-    document.querySelector(targetId).scrollIntoView({
-        behavior: "smooth",
-        inline: "start"
-    })
+    if(targetId === '#app_body'){
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    }else{
+        document.querySelector(targetId).scrollIntoView({
+            behavior: "smooth",
+            inline: "start"
+        })
+    }
+    
     
 }
 /**
