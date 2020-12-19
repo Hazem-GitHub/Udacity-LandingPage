@@ -40,9 +40,9 @@ let observer;
 const generateMenuItemTemplate = ( index ) => {
     const newLi = document.createElement( 'li' );
     const newAnchor = document.createElement( 'a' );
-    const AnchorText = sections[ index - 1 ].getAttribute('data-nav');
-    const AnchorColor = sections[ index - 1 ].getAttribute('data-color');
-    newAnchor.href = `#section${ index }`;
+    const AnchorText = sections[ index ].getAttribute('data-nav');
+    const AnchorColor = sections[ index ].getAttribute('data-color');
+    newAnchor.href = `#section${ index + 1 }`;
     newAnchor.className = `menu__link border--${AnchorColor}`;
     newAnchor.textContent = AnchorText;
     newLi.appendChild( newAnchor );
@@ -86,9 +86,9 @@ const currentActiveNavItemEl = () => {
 function smoothscroll(e){
     e.preventDefault();
     const targetId = e.currentTarget.getAttribute("href");
-    window.scrollTo({
-        top: document.querySelector(targetId).offsetTop,
-        behavior: "smooth"
+    document.querySelector(targetId).scrollIntoView({
+        behavior: "smooth",
+        inline: "start"
     })
     
 }
@@ -98,10 +98,11 @@ function smoothscroll(e){
 * @param {HTMLElement} el - scroll to this el offsetLeft
 */
 function smoothscrollHorizontal( el ){
-    navbar.parentElement.scrollTo({
-        left: el.offsetLeft,
-        behavior: "smooth"
-    })
+    navbar.parentElement.scrollLeft = el.offsetLeft;
+    // el.scrollIntoView({
+    //     behavior: "smooth",
+    //     inline: "start"
+    // })
     
 }
 
@@ -152,7 +153,7 @@ const onStopScrolling = function (callback) {
 */
 // 1. Build the nav
 for ( let i = 0; i < sections_length; i++ ) {
-    const menuItem = generateMenuItemTemplate( i + 1 );
+    const menuItem = generateMenuItemTemplate( i );
     docFragment.appendChild( menuItem ) ;
 }
 

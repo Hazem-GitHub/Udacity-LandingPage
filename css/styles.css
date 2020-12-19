@@ -118,13 +118,14 @@ section {
     width: 100%;
     z-index: 5;
     overflow: hidden;
-    transition: ease 1s all;
+    transition: all ease 1s;
 }
 .page__header.hideNav{
     transform: translateY(-100%);
 }
     .navbar__menu{
     overflow-x: auto;
+    transition: all ease 0.5s;
     }
     /* Navigation Styles*/
     .navbar__menu ul {
